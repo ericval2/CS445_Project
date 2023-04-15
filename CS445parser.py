@@ -1,20 +1,5 @@
-# this is the parser for the CS454 project
-
-import sys
 import os
 import re
-
-#  algorithm for the parser
-
-#  1.  locate log folder from parent directory 
-#  2.  locate file in log folder
-#  3.  open file
-#  4.  read file
-#  5.  close file
-# 6. return file 
-
-#  7.  parse file to extract comment 
-# 9. return comment
 
 #create function that will locate the log folder from the partent directory and the alert file from the log folder
 def locReadFile():
