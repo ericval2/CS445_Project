@@ -64,6 +64,10 @@ def ifStatement(comment, ip):
     snortRuleNull = '-p tcp --tcp-flags ALL NULL'
     # define snort rule string for XMAS scan
     snortRuleXmas = '-p tcp --tcp-flags ALL XMAS'
+    # define snort rule string for ACK scan
+    snortRuleAck = '-p tcp --tcp-flags ALL ACK'
+    #define snort rule string for Full Connect scan
+    snortRuleFullCon = '-p tcp --syn'
     # define reject string
     reject = '-j REJECT --reject-with tcp-reject'
 
@@ -79,6 +83,12 @@ def ifStatement(comment, ip):
     elif 'NULL' in comment:
         nullDefend = sudoIptables + ' ' + ipAddr + snortRuleNull + ' ' + reject
         return nullDefend
+    elif 'ACK' in comment:
+        ackDefend = sudoIptables + ' ' + ipAddr + snortRuleAck + ' ' + reject
+        return ackDefend
+    elif 'Full Connect' in comment:
+        fullConDefend = sudoIptables + ' ' + ipAddr + snortRuleFullCon + ' ' + reject
+        return fullConDefend
     else:
         return 'No known scan detected'
 
