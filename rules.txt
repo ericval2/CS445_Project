@@ -15,5 +15,5 @@ alert tcp any any -> any any (flags: FPU; message: "alert scan nmap XMAS"; sid: 
 flag fpu checks for tcp packets w/ f for fin, p for push and u for urg flags
 
 detects fin scan
-alert tcp any any -> any any (flags: F; message: "alert scan nmap XMAS"; sid: 4;)
+alert tcp any any -> any any (flags: F; message: "alert scan nmap XMAS"; sid: 5;)
 flag f checks for fin flag in tcp header
