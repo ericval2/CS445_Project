@@ -6,7 +6,6 @@ def locReadFile():
     #locate the log folder from the parent directory
     parentDir = os.getcwd()
     logDir = 'log'
-    
     logFolder = os.path.join(parentDir, logDir)
     #locate the alert file from the log folder
     alertFile = os.path.join(logFolder, 'alert.txt')
