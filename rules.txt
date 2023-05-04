@@ -1,19 +1,7 @@
-detects ack scan
 alert tcp any any -> any any (flags: A; msg: "alert scan nmap ACK"; sid: 1;)
-flag A checks for ack flag set in TCP header
 
-detects null scan
 alert tcp any any -> any any (flags: 0; msg: "alert scan nmap NULL"; sid: 2;)
-flag 0  is absence of tcp flags
 
-detects full connect scan
-alert tcp any any -> any any (flags: S; msg: "alert scan nmap Full Connect"; sid: 3;)
-flag S checks for syn flag set in tcp header
+alert tcp any any -> any any (flags: FPU; msg: "alert scan nmap XMAS"; sid: 3;)
 
-detects xmas scan
-alert tcp any any -> any any (flags: FPU; msg: "alert scan nmap XMAS"; sid: 4;)
-flag fpu checks for tcp packets w/ f for fin, p for push and u for urg flags
-
-detects fin scan
-alert tcp any any -> any any (flags: F; msg: "alert scan nmap XMAS"; sid: 5;)
-flag f checks for fin flag in tcp header
+alert tcp any any -> any any (flags: F; msg: "alert scan nmap FIN"; sid: 4;)
