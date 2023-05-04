@@ -8,11 +8,15 @@ def locReadFile():
     logDir = 'log'
     logFolder = os.path.join(parentDir, logDir)
     #locate the alert file from the log folder
-    alertFile = os.path.join(logFolder, 'newFile.txt')
+    alertFile = os.path.join(logFolder, 'newFile.txt') 
     #open the alert file for reading
-    f = open(alertFile, 'r')
+    f = open(alertFile, 'r+')
     fileContent = f.read()
+    f.truncate(0)
     f.close()
+    #print(fileContent)
+    #erase contents of file
+
 
     return fileContent
 
@@ -95,12 +99,14 @@ def ifStatement(comment, ip):
 
 
 def main():
-    file = locReadFile()
-    comments = parseComments(file)
-    ips = parseIPAddrs(file)
-    #loop through both comments and ips and input into ifStatement function
-    for i in range(0, len(comments)):
-        os.system(ifStatement(comments[i], ips[i]))
+
+    while os.stat('log/newFile.txt').st_size != 0:
+        file = locReadFile()
+        comments = parseComments(file)
+        ips = parseIPAddrs(file)
+        #loop through both comments and ips and input into ifStatement function
+        for i in range(0, len(comments)):
+            os.system(ifStatement(comments[i], ips[i]))
     
 
 if __name__ == "__main__":
