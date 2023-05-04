@@ -8,7 +8,7 @@ def locReadFile():
     logDir = 'log'
     logFolder = os.path.join(parentDir, logDir)
     #locate the alert file from the log folder
-    alertFile = os.path.join(logFolder, 'alert.txt')
+    alertFile = os.path.join(logFolder, 'newFile.txt')
     #open the alert file for reading
     f = open(alertFile, 'r')
     fileContent = f.read()
@@ -63,7 +63,7 @@ def parseIPAddrs(contentToParse):
 #parse the comment for the words XMAS, FIN, or NULL
 def ifStatement(comment, ip):
     # define sudo iptables -A INPUT string
-    sudoIptables = 'sudo iptables -A INPUT'
+    sudoIptables = 'sudo iptables -A INPUT -s'
     # define snort rule string for FIn scan
     snortRuleFin = ' -p tcp --tcp-flags ALL FIN'
     # define snort rule string for NULL scan
@@ -73,7 +73,7 @@ def ifStatement(comment, ip):
     # define snort rule string for ACK scan
     snortRuleAck = ' -p tcp --tcp-flags ALL ACK'
     # define reject string
-    reject = '-j REJECT --reject-with tcp-reject'
+    reject = '-j REJECT --reject-with tcp-reset'
 
     ipAddr = ip
 
