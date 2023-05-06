@@ -71,7 +71,7 @@ def ifStatement(comment, ip):
     # define snort rule string for FIn scan
     snortRuleFin = ' -p tcp --tcp-flags ALL FIN'
     # define snort rule string for NULL scan
-    snortRuleNull = ' -p tcp --tcp-flags ALL NULL'
+    snortRuleNull = ' -p tcp --tcp-flags ALL NONE'
     # define snort rule string for XMAS scanc
     snortRuleXmas = ' -p tcp --tcp-flags ALL FIN,PSH,URG'
     # define snort rule string for ACK scan
@@ -107,7 +107,9 @@ def main():
         #loop through both comments and ips and input into ifStatement function
         for i in range(0, len(comments)):
             os.system(ifStatement(comments[i], ips[i]))
+        print("Parsed")
     
 
 if __name__ == "__main__":
-    main()
+	while(True):
+		main()
