@@ -13,7 +13,7 @@ def portScan(scanType, portNumber):
 	#Have terminal conduct scan
 	os.system(scan)
 	#sleep to allow Ctrl+C to end script and not just start next scan
-	time.sleep(1)
+	time.sleep(5)
 	
 #Randomly Generate the Scan Type
 def chooseScanType():
